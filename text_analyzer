@@ -1,0 +1,58 @@
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+void text_analyzer(char text[100]) {
+    printf("Enter the text: ");
+    fgets(text, 100, stdin);
+    text[strcspn(text, "\n")] = '\0';
+}
+
+int main(void) {
+    char text[100];
+
+    int uppercase_letter = 0;
+    int Lowercase_letter = 0;
+    int digit_use = 0;
+    int space_use = 0;
+    int special_character = 0;
+    int vowels = 0;
+    int length;
+
+    text_analyzer(text);
+    length = strlen(text);
+
+    printf("=== TEXT ANALYSIS ===\n");
+
+    for (int i = 0; i < length; i++) {
+        if (tolower(text[i]) == 'a' ||
+            tolower(text[i]) == 'e' ||
+            tolower(text[i]) == 'i' ||
+            tolower(text[i]) == 'o' ||
+            tolower(text[i]) == 'u') {
+            vowels++;
+        }
+
+        if (isupper(text[i])) {
+            uppercase_letter++;
+        } else if (islower(text[i])) {
+            Lowercase_letter++;
+        } else if (isdigit(text[i])) {
+            digit_use++;
+        } else if (isspace(text[i])) {
+            space_use++;
+        } else if (ispunct(text[i])) {
+            special_character++;
+        }
+    }
+
+    printf("Uppercase letters: %d\n", uppercase_letter);
+    printf("Lowercase letters: %d\n", Lowercase_letter);
+    printf("Digits: %d\n", digit_use);
+    printf("Special characters: %d\n", special_character);
+    printf("Length: %d\n", length);
+    printf("Vowels: %d\n", vowels);
+    printf("Spaces: %d\n", space_use);
+
+    return 0;
+}
