@@ -8,5 +8,6 @@ A collection of C programming projects built while learning programming fundamen
 - Product Price Calculator
 - Caesar Cipher Encryption tool
 - password checker
+- text analyzer
 
   
